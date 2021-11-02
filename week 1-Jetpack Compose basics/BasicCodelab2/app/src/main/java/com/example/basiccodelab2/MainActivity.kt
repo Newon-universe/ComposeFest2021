@@ -40,7 +40,7 @@ private fun MyApp() {
         OnboardingScreen(onContinueClicked = { shouldShowOnboarding = false })
     } else {
         Greetings()
-    } 
+    }
 }
 
 
