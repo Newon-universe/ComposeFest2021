@@ -129,3 +129,6 @@ GitKraken을 실행하고, Clone a repo를 열어줍니다.
     ```
     $ git push origin main
     ```
+
+
+## 잔디가 왜 안 심어질까 ..?
