@@ -112,7 +112,7 @@ fun Greeting(name: String) {
 @Preview(showBackground = true, widthDp = 320, heightDp = 320)
 @Composable
 fun OnboardingPreview() {
-    BasicCodeLab2Theme {
+    BasicCodeLab2Theme { 
         OnboardingScreen(onContinueClicked = {})
     }
 }
