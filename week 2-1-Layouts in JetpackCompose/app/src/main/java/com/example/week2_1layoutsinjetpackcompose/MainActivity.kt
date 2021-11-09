@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -29,91 +31,75 @@ class MainActivity : ComponentActivity() {
         setContent {
             Week21LayoutsInJetpackComposeTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Appbar()
-                    PhotographerCard()
+                LayoutsCodelab()
+            }
+        }
+    }
+}
+
+@Composable
+fun LayoutsCodelab() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = "LayoutsCodelab")
+                },
+                actions = {
+                    Row{
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(Icons.Filled.Favorite, contentDescription = null)
+                        }
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(Icons.Filled.Earbuds, contentDescription = null)
+                        }
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(Icons.Filled.DownhillSkiing, contentDescription = null)
+                        }
+                    }
                 }
-            }
-        }
-    }
-}
-
-@Composable
-fun Appbar(modifier : Modifier = Modifier) {
-
-    Column {
-        TopAppBar(
-            title = {
-                Text(text = "Page title", maxLines = 2)
-            },
-            navigationIcon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_top_appbar_android_black_24dp),
-                    contentDescription = "",
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-            },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
-        Button(modifier = Modifier, onClick = null, content = { Unit })
-    }
-}
-
-@Composable
-fun Button(
-    modifier: Modifier = Modifier,
-    onClick: (() -> Unit)? = null,
-    content: @Composable () -> Unit
-) {
-    Button {
-        Row {
-            R.drawable.popcat
-            Spacer(modifier = Modifier
-                .padding(4.dp)
             )
-            Text("Button")
+        },
+        bottomBar = {
+            BottomNavigation(
+                content = {
+                    Row() {
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(Icons.Filled.AccountBox, contentDescription = null)
+                        }
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(Icons.Filled.ElectricCar, contentDescription = null)
+                        }
+
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(Icons.Filled.ImageNotSupported, contentDescription = null)
+                        }
+                    }
+                }
+            )
         }
+    ) { innerPadding ->
+        BodyContent(modifier = Modifier
+            .padding(innerPadding)
+            .padding(8.dp))
     }
+
+
 }
 
 @Composable
-fun PhotographerCard(modifier : Modifier = Modifier) {
-    Row(
-        modifier
-            .padding(16.dp)
-            .clip(RoundedCornerShape(4.dp))
-            .background(MaterialTheme.colors.surface)
-            .clickable(onClick = {})
-            .padding(16.dp)) {
-       Surface(
-           modifier = Modifier.size(50.dp),
-           shape = CircleShape,
-           color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
-       ) {
-           R.drawable.popcat
-       }
-        Column(
-            modifier = Modifier
-                .padding(start = 8.dp)
-                .align(Alignment.CenterVertically)
-        ) {
-            Text("Alfred Sisley", fontWeight = FontWeight.Bold)
-            CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                Text("3 minutes ago", style = MaterialTheme.typography.body2)
-            }
-        }
+fun BodyContent(modifier: Modifier) {
+    Column(modifier = modifier) {
+        Text(text = "Hi there !")
+        Text(text = "Thanks for going through the Layouts codelab")
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun DefaultPreview() {
     Week21LayoutsInJetpackComposeTheme {
-        Appbar()
+        LayoutsCodelab()
     }
 }
